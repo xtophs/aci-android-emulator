@@ -1,0 +1,42 @@
+apiVersion: '2018-10-01'
+identity: null
+location: eastus
+name: sdkfiles
+properties:
+  containers:
+  - name: sdkfiles-mg
+    properties:
+      image: xtoph/android-emu:latest
+      ports:
+      - port: 5901
+        protocol: TCP
+      - port: 22
+        protocol: TCP
+      - port: 5037
+        protocol: TCP
+      resources:
+        requests:
+          cpu: 1.0
+          memoryInGB: 1.5
+      volumeMounts:
+      - mountPath: /sdk
+        name: azurefile 
+  ipAddress:
+    dnsNameLabel: vnc-demo
+    ports:
+    - port: 5901
+      protocol: TCP
+    - port: 22
+      protocol: TCP
+    - port: 5037
+      protocol: TCP
+    type: Public
+  osType: Linux
+  restartPolicy: Always
+  volumes:
+  - azureFile:
+      shareName: acishare
+      storageAccountName: 
+      storageAccountKey: ""
+    name: azurefile
+type: Microsoft.ContainerInstance/containerGroups
