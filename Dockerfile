@@ -1,7 +1,7 @@
 FROM thyrlian/android-sdk-vnc
-RUN sdkmanager "platform-tools" "platforms;android-24" "emulator"
-RUN sdkmanager "system-images;android-24;default;armeabi-v7a"
-RUN echo no | avdmanager create avd -n emuTest -k "system-images;android-24;default;armeabi-v7a"
+RUN sdkmanager "platform-tools" "platforms;android-28" "emulator"
+RUN sdkmanager "system-images;android-28;default;x86"
+RUN echo no | avdmanager create avd -n emuTest -k "system-images;android-28;default;x86"
 ENV DISPLAY=
 ENV QT_QPA_PLATFORM='offscreen'
 
