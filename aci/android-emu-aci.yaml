@@ -20,7 +20,9 @@ properties:
           memoryInGB: 1.5
       volumeMounts:
       - mountPath: /sdk
-        name: azurefile 
+        name: azurefile
+      - mountPath: /mnt
+        name: azurekeyfile        
   ipAddress:
     dnsNameLabel: vnc-demo
     ports:
@@ -36,7 +38,12 @@ properties:
   volumes:
   - azureFile:
       shareName: acishare
-      storageAccountName: 
-      storageAccountKey: ""
+      storageAccountName: mystorageaccount8781
+      storageAccountKey: "JWYtjpUtrX9sb0WI+esTQSjwXIX5Wx6RFim04ZzRXuQ4KAw7H6ofCgVZq4xIkQPagzjWom0gpPpQMtTFpXjaew=="
     name: azurefile
+  - azureFile:
+      shareName: sshfiles
+      storageAccountName: mystorageaccount8781
+      storageAccountKey: "JWYtjpUtrX9sb0WI+esTQSjwXIX5Wx6RFim04ZzRXuQ4KAw7H6ofCgVZq4xIkQPagzjWom0gpPpQMtTFpXjaew=="
+    name: azurekeyfile
 type: Microsoft.ContainerInstance/containerGroups
