@@ -5,12 +5,17 @@ Evolved from the article at: https://medium.com/@AndreSand/android-emulator-on-d
 ## Usage
 
 ### Building the Container
-Build the Docker container to include your public key
+Build the Docker container to include your public key, assuming you have a private key / public keypair with the default name id_rsa in ~/.ssh.
+
+*Note:* Copying your public key into the image is not a production solution, unless you have means to expire and rotate your keys. 
 
 ```bash
 $ cd aci
-$ docker build -t <your repo>/android-emu .
-$ docker push xtoph/android-emu
+
+# copy your public key 
+$ cp ~/.ssh/id_rsa.pub ./sshlocal
+$ docker build -t <your repo>/android-emu:<tag> .
+$ docker push xtoph/android-emu:<tag>
 ```
 
 ### Deploye the container to ACI
